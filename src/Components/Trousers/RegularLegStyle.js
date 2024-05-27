@@ -42,8 +42,9 @@ export const RegularLegStyle = () => {
         <div className="flex flex-col border-solid border-2 opacity-80 shadow-white shadow-md bg-[#000000] border-[#A6A6A6] h-100 mx-2 mt-[20px] p-3 rounded-md  ">
 
             <article className="text-white flex items-center justify-center text-[28px] font-bold">Regular Leg Trousers Style  Option</article>
-            <article className="text-white flex items-center justify-start text-[20px] font-bold mx-2 mt-2">Pocket</article>
+            <article className="text-white flex items-center justify-start text-[20px] font-bold mx-2 mt-2">BACK POCKET</article>
             <div className=" bg-[#141414]  border-solid rounded-md border-2  border-[#bbb5b5] p-2 shadow-[#faf397] shadow-lg">
+                {/* Back pocket */}
             <div className="grid grid-cols-3 grid-row-4 p-2">
             
                 <div className="text-white text-[13px]" >STANDARD FLAP</div>
@@ -128,7 +129,13 @@ export const RegularLegStyle = () => {
               <span>T3200</span>
               </div>
             </Tooltip>
-            <div></div>
+            
+            </div>
+            </div>
+            <article className="text-white flex items-center justify-start text-[20px] font-bold mx-2 mt-2">FRONT POCKET</article>
+            {/* Front pocket */}
+            <div className=" bg-[#141414]  border-solid rounded-md border-2  border-[#bbb5b5] p-2 shadow-[#faf397] shadow-lg">
+            <div className="grid grid-cols-3 grid-rows-1 ">
             <div className="text-white text-[13px] mt-[10px]">TICKET POCKET</div>
             <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-h" data-tooltip-place="top"> 
               <input type="radio" name="ticket" onChange={() => TicketPocketStyleChange()} />
@@ -154,7 +161,8 @@ export const RegularLegStyle = () => {
 
             </div>
             </div>
-            <article className="text-white flex items-center justify-start text-[20px] font-bold mx-2 mt-2">Bottom</article>
+            <article className="text-white flex items-center justify-start text-[20px] font-bold mx-2 mt-2">HEM STYLE</article>
+            {/* Hem style */}
             <div className="bg-[#141414]  border-solid rounded-md border-2 mx-1 border-[#bbb5b5] p-2 shadow-[#faf397] shadow-lg">
             <div className="grid grid-cols-4 grid-rows-2 p-5">
             <div className="text-white text-[13px] mt-[10px]">BOTTOM STYLE</div>

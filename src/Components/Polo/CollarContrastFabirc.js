@@ -7,12 +7,14 @@ export const CollarContrastFabricUI = () => {
   function importAll(r) {
     return r.keys().map(r);
   }
-  const Fabricimages = importAll(require.context('../Fabric', false, /\.jpg$/));
+  const Fabricimages = importAll(require.context('./polofabric', false, /\.jpg$/));
+  console.log("fabric:s:",Fabricimages)
   const { sharedState, setSharedState } = useContext(StyleContext);
 
 
   const selectFabric = (index) => {
-    setSharedState({ Fabricindex: index }); //operation for seleting fabric
+    setSharedState({ CollarFabricIndex: index }); //operation for seleting fabric
+    console.log("sdlfkjsdlkfjsdlsdlfjsdlkfjslkdjfs-----",sharedState.CollarFabricIndex)
   };
 
   return (

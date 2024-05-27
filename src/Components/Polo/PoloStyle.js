@@ -7,13 +7,13 @@ import { ChangePoloStyle } from "./ChangePoloStyle";
 
 
 export const PoloStyleChange = () => {
-    const [producttype,setproducttype]=useState('InterChangeable')
+    const [producttype,setproducttype]=useState('Changeable')
     
     const [fixedorchanged,setfixedorchanged]=useState('true');
     const Callfixedorchanged=()=>{
         if(fixedorchanged=='false'){
         setfixedorchanged('true')
-        setproducttype('Interchangeable')
+        setproducttype('Changeable')
     
     }
         if(fixedorchanged=='true'){
@@ -31,7 +31,7 @@ export const PoloStyleChange = () => {
             <article className="text-white flex items-center justify-center text-[28px] font-bold mb-2">Polo Style Option</article>
             <div className="flex items-center text-white text-[18px] mx-3">
                 <div>COLLAR TYPE</div>
-            <button className="button-86 w-[25%] p-2 mb-3 mx-3 text-[18px] " onClick={()=>Callfixedorchanged()}>{producttype}</button>
+            <button className="button-86 w-[25%] p-2 mb-3 mx-3 text-[15px] " onClick={()=>Callfixedorchanged()}>{producttype}</button>
             </div>
             {fixedorchanged==='true'&&<FixedPoloStyle/>}
             {fixedorchanged==='false'&&<ChangePoloStyle/>}

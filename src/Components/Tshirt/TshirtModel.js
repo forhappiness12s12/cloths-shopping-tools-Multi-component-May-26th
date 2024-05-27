@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect, Suspense } from "react";
 import { StyleContext } from "./StyleproviderTshirt";
 import { Canvas, useThree,useFrame } from '@react-three/fiber';
-import { ContactShadows, OrbitControls, useGLTF } from '@react-three/drei';
+import { ContactShadows,Environment, OrbitControls, useGLTF } from '@react-three/drei';
 import { TextureLoader } from 'three';
 import * as THREE from 'three';
 
@@ -66,6 +66,16 @@ const Scene = ({ nodes, fabricMaterials, sharedState }) => {
       <pointLight position={[-10, -10, -10]} />
       <directionalLight position={[0, -100, -100]} intensity={1} />
       <directionalLight position={[0, 300, 100]} intensity={1} />
+      <Environment preset="city" />
+            <ContactShadows
+              rotation-x={Math.PI / 2}
+              position={[0, -0.8, 0]}
+              opacity={0.25}
+              width={10}
+              height={10}
+              blur={1.5}
+              far={0.8}
+            />
       <group ref={group} dispose={null}>
         {Object.keys(nodes).map(key => (
           <mesh

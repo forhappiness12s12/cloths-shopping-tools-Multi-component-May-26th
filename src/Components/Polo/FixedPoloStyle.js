@@ -27,10 +27,14 @@ export const FixedPoloStyle=()=>{
 
     const [CollarContrast,setCollarContrast]=useState('false');
     const CollarContrastFabric=(number)=>{
-        if(number==0)
+        if(number==0){
         setCollarContrast('true');
-    else
+        setSharedState({CollarContrastFlag:true})}
+    else{
     setCollarContrast('false');
+    setSharedState({CollarContrastFlag:false})
+    }
+
     }
 
     const [NeckbandContrast,setNeckbandContrast]=useState('false');
@@ -67,6 +71,13 @@ export const FixedPoloStyle=()=>{
             newarray[0] = true;
         setSharedState({ BottomStyle: newarray })
     }
+    const CollarStyleChange=(number)=>{
+        const newarray=new Array(5).fill(false)
+        newarray[number]=true
+        setSharedState({CollarStyle:newarray})
+        console.log("Collarstyleorder:",sharedState.CollarStyle)
+
+    }
 
     return(
         <div className=" bg-[#141414]  border-solid rounded-md border-2  border-[#bbb5b5] p-2 mx-2 shadow-[#faf397] shadow-lg">
@@ -76,7 +87,7 @@ export const FixedPoloStyle=()=>{
                 <div className="text-white text-[13px]" >COLLAR STYLE</div>
                 <label className="container text-white" data-tooltip-id="my-tooltip-left" data-tooltip-place="top">
 
-                    <input type="radio" name="collarstyle" onChange={() => BackPocketStyleChange(0)} />
+                    <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(0)} />
                     <span className="checkmark px-1"></span>
                     Round
                 </label>
@@ -92,7 +103,7 @@ export const FixedPoloStyle=()=>{
                     data-tooltip-place="top"
                 >
 
-                    <input type="radio" name="collarstyle" onChange={() => BackPocketStyleChange(1)} />
+                    <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(1)} />
                     <span className="checkmark px-1"></span>
                     Cutaway
                 </label>
@@ -108,7 +119,7 @@ export const FixedPoloStyle=()=>{
                     data-tooltip-place="top"
                 >
 
-                    <input type="radio" name="collarstyle" onChange={() => BackPocketStyleChange(1)} />
+                    <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(2)} />
                     <span className="checkmark px-1"></span>
                     Classic
                 </label>
@@ -121,7 +132,7 @@ export const FixedPoloStyle=()=>{
                 <div></div>
                 
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-htooltip-right" data-tooltip-place="top">
-                    <input type="radio" name="collarstyle" onChange={() => BackPocketStyleChange(2)} />
+                    <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(3)} />
                     <span className="checkmark px-1"></span>Button
                 </label>
                 <Tooltip id="my-htooltip-right" className='opacity-100' >
@@ -131,7 +142,7 @@ export const FixedPoloStyle=()=>{
                     </div>
                 </Tooltip>
                 <label className="container text-white   mt-[10px]" data-tooltip-id="my-htooltip-left" data-tooltip-place="top">
-                    <input type="radio" name="collarstyle" onChange={() => BackPocketStyleChange(3)} />
+                    <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(4)} />
                     <span className="checkmark px-1"></span>Conclead
                 </label>
                 <Tooltip id="my-htooltip-left" className='opacity-100' >

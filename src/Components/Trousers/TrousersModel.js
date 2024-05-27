@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect, Suspense } from "react";
 import { StyleContext } from "./StyleProvider";
 import { Canvas, useThree,useFrame } from '@react-three/fiber';
-import { ContactShadows, OrbitControls, useGLTF } from '@react-three/drei';
+import { ContactShadows, Environment, OrbitControls,useGLTF } from '@react-three/drei';
 import { TextureLoader } from 'three';
 import * as THREE from 'three';
 
@@ -34,15 +34,15 @@ export const TrousersModel = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
      
-     <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 4], fov: 50 }}>
+     <Canvas shadows dpr={[1, 2]} >
           <directionalLight
             position={[0, -1000, -1000]}
-            intensity={0.6}
+            intensity={0.1}
 
           />
           <directionalLight
             position={[0, 1000, 1000]}
-            intensity={0.6}
+            intensity={0.1}
           />
         <Scene nodes={useGLTF("pra.glb").nodes} fabricMaterials={fabricMaterials} sharedState={sharedState} />
       </Canvas>
@@ -72,6 +72,16 @@ const Scene = ({ nodes, fabricMaterials, sharedState }) => {
       <pointLight position={[-10, -10, -10]} />
       <directionalLight position={[0, -100, -100]} intensity={1} />
       <directionalLight position={[0, 300, 100]} intensity={1} />
+      <Environment preset="city" />
+            <ContactShadows
+              rotation-x={Math.PI / 2}
+              position={[0, -0.8, 0]}
+              opacity={0.25}
+              width={10}
+              height={10}
+              blur={1.5}
+              far={0.8}
+            />
       <group ref={group}>
         <mesh castShadow receiveShadow>
         <mesh
