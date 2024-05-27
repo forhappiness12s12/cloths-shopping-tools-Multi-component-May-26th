@@ -14,7 +14,7 @@ function App() {
      <Router>
       <Routes>
         <Route path='/Trousers' exact Component={Trousers}/>
-        <Route path='/' Component={Tshirt}/>
+        <Route path='/Tshirt' Component={Tshirt}/>
         <Route path='/Polo' Component={Polo}/>
         <Route path='/Joggers' Component={Joggers}/>
         {/* <Route exact path='/' Component={Selectoptiontotall}/> */}

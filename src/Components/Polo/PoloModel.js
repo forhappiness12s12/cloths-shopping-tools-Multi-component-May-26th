@@ -77,7 +77,7 @@ export const PoloModel = () => {
         <Suspense fallback={<Loading />}>
             <Canvas className="fullscreen-canvas">
                 <Scene
-                    nodes={useGLTF("polo2.glb").nodes}
+                    nodes={useGLTF("polo3.glb").nodes}
                     fabricMaterials={fabricMaterials}
                     sharedState={sharedState}
                     collarfabricMaterials={collarfabricMaterials}
@@ -93,7 +93,7 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
 
     const { camera } = useThree();
     const group = useRef();
-    
+    console.log("polo_nodes:", nodes)
 
     useEffect(() => {
         camera.position.set(0, 0, 15)
@@ -129,17 +129,19 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                     <mesh
 
                         material={fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.main_shirt.geometry}
-                        visible={false}
+                        geometry={nodes.main_shirt002.geometry}
+                        visible={true}
                     />
                     <mesh
 
-                        material={fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.main_shirt001.geometry}
-                        visible={false}
+                        material={sharedState.CuffContrastFlag ?
+                            cufffabricMaterials[sharedState.CuffFabricIndex] :
+                            fabricMaterials[sharedState.Fabricindex]}
+                        geometry={nodes.main_shirt003.geometry}
+                        visible={true}
                     />
                     {/* Cuff side */}
-                    <mesh
+                    {/* <mesh
 
                         material={
                             fabricMaterials[sharedState.Fabricindex]}
@@ -168,7 +170,7 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                             fabricMaterials[sharedState.Fabricindex]}
                         geometry={nodes.main_shirt006_1.geometry}
                         visible={true}
-                    />
+                    /> */}
                     <mesh
                         material={fabricMaterials[sharedState.Fabricindex]}
                         geometry={nodes.placket_front.geometry}
@@ -184,22 +186,7 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                         geometry={nodes.neck_collar.geometry}
 
                     />
-                    {/* <mesh
-                        material={sharedState.NeckContrastFlag
-                            ?neckfabricMaterials[sharedState.NeckFabricIndex]
-                            :fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.neck_collar001.geometry}
-                    /> */}
-                    <mesh
-                        material={fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.buttons.geometry}
-                        visible={sharedState.CollarStyle[3]}
-                    />
-                    <mesh
-                        material={fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.buttons001.geometry}
-                        visible={sharedState.CollarStyle[3]}
-                    />
+
                     <mesh
                         material={sharedState.CollarContrastFlag
                             ? collarfabricMaterials[sharedState.CollarFabricIndex]
@@ -215,26 +202,13 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                         geometry={nodes.collar_button_down.geometry}
                         visible={sharedState.CollarStyle[3]}
                     />
-                    <mesh
-                        material={sharedState.CollarContrastFlag
-                            ? collarfabricMaterials[sharedState.CollarFabricIndex]
-                            : fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.collar_button_down001.geometry}
-                        visible={sharedState.CollarStyle[3]}
-                    />
+
                     <mesh
                         material={sharedState.CollarContrastFlag
                             ? collarfabricMaterials[sharedState.CollarFabricIndex]
                             : fabricMaterials[sharedState.Fabricindex]}
                         geometry={nodes.collar_classical.geometry}
-                        visible={sharedState.CollarStyle[2]||sharedState.CollarStyle[1]}
-                    />
-                    <mesh
-                        material={sharedState.CollarContrastFlag
-                            ? collarfabricMaterials[sharedState.CollarFabricIndex]
-                            : fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.collar_classical001.geometry}
-                        visible={sharedState.CollarStyle[2]||sharedState.CollarStyle[1]}
+                        visible={sharedState.CollarStyle[2] || sharedState.CollarStyle[1]}
                     />
                     <mesh
                         material={sharedState.CollarContrastFlag
@@ -243,27 +217,7 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                         geometry={nodes.collar_round.geometry}
                         visible={sharedState.CollarStyle[0]}
                     />
-                    <mesh
-                        material={sharedState.CollarContrastFlag
-                            ? collarfabricMaterials[sharedState.CollarFabricIndex]
-                            : fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.collar_round001.geometry}
-                        visible={sharedState.CollarStyle[0]}
-                    />
-                    <mesh
-                        material={sharedState.CollarContrastFlag
-                            ? collarfabricMaterials[sharedState.CollarFabricIndex]
-                            : fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.collar_tapper.geometry}
-                        visible={false}
-                    />
-                    <mesh
-                        material={sharedState.CollarContrastFlag
-                            ? collarfabricMaterials[sharedState.CollarFabricIndex]
-                            : fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.collar_tapper001.geometry}
-                        visible={false}
-                    />
+
 
                     <mesh
 
@@ -278,6 +232,7 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                         geometry={nodes.front_buttons001.geometry}
                         visible={sharedState.ButtonFlag[1]}
                     />
+
                     <mesh
                         material={fabricMaterials[sharedState.Fabricindex]}
                         geometry={nodes.placket_back.geometry}
@@ -291,16 +246,13 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                         geometry={nodes.pocket_front.geometry}
                         visible={sharedState.ChestStyle[0]}
                     />
-                    <mesh
-                        material={fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.pocket_front001.geometry}
-                        visible={sharedState.ChestStyle[0]}
-                    />
-                    <mesh
+
+
+                    {/* <mesh
                         material={fabricMaterials[sharedState.Fabricindex]}
                         geometry={nodes.pocket_front002.geometry}
                         visible={sharedState.ChestStyle[1]}
-                    />
+                    />  */}
                 </mesh>
 
             </group>

@@ -44,7 +44,7 @@ export const TrousersModel = () => {
             position={[0, 1000, 1000]}
             intensity={0.1}
           />
-        <Scene nodes={useGLTF("pra.glb").nodes} fabricMaterials={fabricMaterials} sharedState={sharedState} />
+        <Scene nodes={useGLTF("pra1.glb").nodes} fabricMaterials={fabricMaterials} sharedState={sharedState} />
       </Canvas>
     </Suspense>
   );
@@ -55,15 +55,15 @@ const Scene = ({ nodes, fabricMaterials, sharedState }) => {
   const group = useRef();
 
   useEffect(() => {
-    camera.position.set(0, 0, 60)
+    camera.position.set(0, 0, 50)
     camera.rotation.set(0,0,20)
-    camera.fov = 75;
+    camera.fov = 70;
     camera.updateProjectionMatrix();
   }, [camera]);
     // Automatic rotation
-    useFrame(() => {
-        group.current.rotation.y += 0.01;
-      });
+    // useFrame(() => {
+    //     group.current.rotation.y += 0.01;
+    //   });
 
   return (
     <>

@@ -54,9 +54,9 @@ const Scene = ({ nodes, fabricMaterials, sharedState }) => {
     camera.updateProjectionMatrix();
   }, [camera]);
     // Automatic rotation
-    useFrame(() => {
-        group.current.rotation.y += 0.01;
-      });
+    // useFrame(() => {
+    //     group.current.rotation.y += 0.01;
+    //   });
 
   return (
     <>
