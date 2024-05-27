@@ -24,14 +24,28 @@ import { ChangeCuffContrastFabricUI } from "./ChangeCuffContrastFabric";
 
 export const ChangePoloStyle=()=>{
     const { sharedState, setSharedState } = useContext(StyleContext);
+    
     const [ChangeCuffContrast,setChangeCuffContrast]=useState('false')
     const ChangeCuffContrastFabric=(number)=>{
-        if(number==0)
+        if(number==0){
             setChangeCuffContrast('true')
-        else
+            setSharedState({CuffContrastFlag:true})
+        }
+        else{
         setChangeCuffContrast('false')
+        setSharedState({CuffContrastFlag:false})
+    }
 
     }
+    const CollarStyleChange=(number)=>{
+        const newarray=new Array(5).fill(false)
+        newarray[number]=true
+        setSharedState({CollarStyle:newarray})
+        
+
+    }
+    
+
     const BackPocketStyleChange = (number) => {
         const newarray = new Array(7).fill(false);
         newarray[number] = true;
@@ -50,6 +64,11 @@ export const ChangePoloStyle=()=>{
             newarray[0] = true;
         setSharedState({ BottomStyle: newarray })
     }
+    const ChestStyleChange=(number)=>{
+        const newarray=new Array(3).fill(false)
+        newarray[number]=true
+        setSharedState({ChestStyle:newarray})
+    }
 
     return(
         <div className=" bg-[#141414]  border-solid rounded-md border-2  border-[#bbb5b5] p-2 mx-2 mt-4 shadow-[#faf397] shadow-lg">
@@ -58,20 +77,20 @@ export const ChangePoloStyle=()=>{
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">COLLAR STYLE</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="icollar" onChange={() => BottomStyleChange(0)} />
+                    <input type="radio" name="icollar" onChange={() => CollarStyleChange(0)} />
                     <span className="checkmark px-1"></span>Round
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100' >
+                <Tooltip id="my-bottom-vent" className='opacity-100 z-10' >
                     <div>
                         <img src={bottomvent} alt="Cat" className='w-[100px]' />
                         <span>T-3620</span>
                     </div>
                 </Tooltip>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
-                    <input type="radio" name="icollar" onChange={() => BottomStyleChange(1)} />
+                    <input type="radio" name="icollar" onChange={() => CollarStyleChange(1)} />
                     <span className="checkmark px-1"></span>Cutaway
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                <Tooltip id="my-bottom-pant" className='opacity-100 z-10' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
@@ -112,7 +131,7 @@ export const ChangePoloStyle=()=>{
             <div className="grid grid-cols-4 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">CHEST POCKET</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="ichest" onChange={() => ChangeCuffContrastFabric(0)} />
+                    <input type="radio" name="ichest" onChange={() => ChestStyleChange(2)} />
                     <span className="checkmark px-1"></span>NO
                 </label>
                 <Tooltip id="my-bottom-vent" className='opacity-100' >
@@ -122,7 +141,7 @@ export const ChangePoloStyle=()=>{
                     </div>
                 </Tooltip>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
-                    <input type="radio" name="ichest" onChange={() => ChangeCuffContrastFabric(1)} />
+                    <input type="radio" name="ichest" onChange={() => ChestStyleChange(1)} />
                     <span className="checkmark px-1"></span>SQUARE
                 </label>
                 <Tooltip id="my-bottom-pant" className='opacity-100' >
@@ -132,7 +151,7 @@ export const ChangePoloStyle=()=>{
                     </div>
                 </Tooltip>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
-                    <input type="radio" name="ichest" onChange={() => ChangeCuffContrastFabric(1)} />
+                    <input type="radio" name="ichest" onChange={() => ChestStyleChange(0)} />
                     <span className="checkmark px-1"></span>POINTED
                 </label>
                 <Tooltip id="my-bottom-pant" className='opacity-100' >

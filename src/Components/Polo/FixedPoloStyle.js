@@ -39,18 +39,24 @@ export const FixedPoloStyle=()=>{
 
     const [NeckbandContrast,setNeckbandContrast]=useState('false');
     const NeckbandContrastFabric=(number)=>{
-        if(number==0)
+        if(number==0){
             setNeckbandContrast('true');
-        else
-        setNeckbandContrast('false');
+            setSharedState({NeckContrastFlag:true})}
+        else{
+            setNeckbandContrast('false');
+            setSharedState({NeckContrastFlag:false})
+    }
     }
 
     const [CuffContrast,setCuffContrast]=useState('false');
     const CuffContrastFabric=(number)=>{
-        if(number==0)
+        if(number==0){
             setCuffContrast('true')
-        else
+            setSharedState({CuffContrastFlag:true})}
+        else{
         setCuffContrast('false')
+        setSharedState({CuffContrastFlag:false})    
+    }
 
     }
     const BackPocketStyleChange = (number) => {
@@ -75,9 +81,22 @@ export const FixedPoloStyle=()=>{
         const newarray=new Array(5).fill(false)
         newarray[number]=true
         setSharedState({CollarStyle:newarray})
-        console.log("Collarstyleorder:",sharedState.CollarStyle)
+        
 
     }
+    const ChestStyleChange=(number)=>{
+        const newarray=new Array(3).fill(false)
+        newarray[number]=true
+        setSharedState({ChestStyle:newarray})
+    }
+    const ButtonFlagChange=(number)=>{
+        if(number==0){
+        setSharedState({ButtonFlag:[false,true]})}
+        else{
+        setSharedState({ButtonFlag:[true,false]})
+        }
+    }
+    
 
     return(
         <div className=" bg-[#141414]  border-solid rounded-md border-2  border-[#bbb5b5] p-2 mx-2 shadow-[#faf397] shadow-lg">
@@ -91,7 +110,7 @@ export const FixedPoloStyle=()=>{
                     <span className="checkmark px-1"></span>
                     Round
                 </label>
-                <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center' >
+                <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center z-10' >
                     <div>
                         <img src={halfpointedright} alt="Cat" className='w-[100px]' />
                         <span >T32K2</span>
@@ -160,8 +179,8 @@ export const FixedPoloStyle=()=>{
                     <input type="radio" name="collarfabric" onChange={() =>CollarContrastFabric(0)} />
                     <span className="checkmark px-1"></span>Contrast
                 </label>
-                <Tooltip id="my-ticket-pocket-h" className='opacity-100' >
-                    <div>
+                <Tooltip id="my-ticket-pocket-h" className='opacity-100 relative' >
+                    <div className="">
                         <img src={ticketpointhor} alt="Cat" className='w-[100px]' />
                         <span>Ticket Horizontal</span>
                     </div>
@@ -184,7 +203,7 @@ export const FixedPoloStyle=()=>{
             <div className="grid grid-cols-4 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">CHEST POCKET</div>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-h" data-tooltip-place="top">
-                    <input type="radio" name="chest" onChange={() => TicketPocketStyleChange()} />
+                    <input type="radio" name="chest" onChange={() => ChestStyleChange(2)} />
                     <span className="checkmark px-1"></span>NO
                 </label>
                 <Tooltip id="my-ticket-pocket-h" className='opacity-100' >
@@ -194,7 +213,7 @@ export const FixedPoloStyle=()=>{
                     </div>
                 </Tooltip>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-v" data-tooltip-place="top">
-                    <input type="radio" name="chest" onChange={() => TicketPocketStyleChange()} />
+                    <input type="radio" name="chest" onChange={() => ChestStyleChange(1)} />
                     <span className="checkmark px-1"></span>Square
                 </label>
                 <Tooltip id="my-ticket-pocket-v" className='opacity-100' >
@@ -204,7 +223,7 @@ export const FixedPoloStyle=()=>{
                     </div>
                 </Tooltip>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-v" data-tooltip-place="top">
-                    <input type="radio" name="ticket" onChange={() => TicketPocketStyleChange()} />
+                    <input type="radio" name="chest" onChange={() => ChestStyleChange(0)} />
                     <span className="checkmark px-1"></span>Pointed
                 </label>
                 <Tooltip id="my-ticket-pocket-v" className='opacity-100' >
@@ -246,7 +265,7 @@ export const FixedPoloStyle=()=>{
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">PLACKET</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="placket" onChange={() => BottomStyleChange(0)} />
+                    <input type="radio" name="placket" onChange={() => ButtonFlagChange(0)} />
                     <span className="checkmark px-1"></span>2 Button
                 </label>
                 <Tooltip id="my-bottom-vent" className='opacity-100' >
@@ -256,7 +275,7 @@ export const FixedPoloStyle=()=>{
                     </div>
                 </Tooltip>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
-                    <input type="radio" name="placket" onChange={() => BottomStyleChange(1)} />
+                    <input type="radio" name="placket" onChange={() => ButtonFlagChange(1)} />
                     <span className="checkmark px-1"></span>3 Button
                 </label>
                 <Tooltip id="my-bottom-pant" className='opacity-100' >

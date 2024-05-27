@@ -7,12 +7,12 @@ export const ChangeCuffContrastFabricUI = () => {
   function importAll(r) {
     return r.keys().map(r);
   }
-  const Fabricimages = importAll(require.context('../Fabric', false, /\.jpg$/));
+  const Fabricimages = importAll(require.context('./polofabric1', false, /\.jpg$/));
   const { sharedState, setSharedState } = useContext(StyleContext);
 
 
   const selectFabric = (index) => {
-    setSharedState({ Fabricindex: index }); //operation for seleting fabric
+    setSharedState({ CuffFabricIndex: index }); //operation for seleting fabric
   };
 
   return (

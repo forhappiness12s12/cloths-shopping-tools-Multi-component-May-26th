@@ -28,14 +28,17 @@ export const JoggersModel = () => {
   // Create fabric materials
   const fabricMaterials = textures.map(texture => new THREE.MeshStandardMaterial({ map: texture }));
   useEffect(()=>{
-    console.log("Changes::",sharedState.BottomStyle)
+    
   },[sharedState]);
+  const Modelname=['loosefitrope.glb','loosefitbottomcuff.glb','loosefitfrontpocket.glb','loosefitjoggers.glb','loosefitbackpocket.glb','skinnyfitrope.glb',
+    'skinnyfitbottomcuff.glb','skinnyfitfrontpocket.glb','skinnyfitjoggers.glb'
+  ]
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
      
       <Canvas className="fullscreen-canvas">
-        <Scene nodes={useGLTF("Joggers1.glb").nodes} fabricMaterials={fabricMaterials} sharedState={sharedState} />
+        <Scene nodes={useGLTF(Modelname[sharedState.Change_Model_Index]).nodes} fabricMaterials={fabricMaterials} sharedState={sharedState} />
       </Canvas>
     </Suspense>
   );
@@ -46,6 +49,7 @@ const Scene = ({ nodes, fabricMaterials, sharedState }) => {
   const group = useRef();
 
   useEffect(() => {
+    console.log("jogger nodes:",nodes)
     camera.position.set(0, 0, 7)
     camera.rotation.set(0,0,10)
     camera.fov = 15;
@@ -53,7 +57,7 @@ const Scene = ({ nodes, fabricMaterials, sharedState }) => {
   }, [camera]);
     // Automatic rotation
     useFrame(() => {
-        group.current.rotation.y += 0.01;
+        // group.current.rotation.y += 0.01;
       });
 
   return (

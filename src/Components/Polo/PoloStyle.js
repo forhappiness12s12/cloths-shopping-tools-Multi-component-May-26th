@@ -8,12 +8,17 @@ import { ChangePoloStyle } from "./ChangePoloStyle";
 
 export const PoloStyleChange = () => {
     const [producttype,setproducttype]=useState('Changeable')
+    const { sharedState, setSharedState } = useContext(StyleContext);
+
     
     const [fixedorchanged,setfixedorchanged]=useState('true');
     const Callfixedorchanged=()=>{
         if(fixedorchanged=='false'){
         setfixedorchanged('true')
         setproducttype('Changeable')
+        setSharedState({CollarContrastFlag:true})
+        console.log("Collarcontrast:::",sharedState.CollarContrastFlag)
+        
     
     }
         if(fixedorchanged=='true'){

@@ -7,12 +7,13 @@ export const NeckbandContrastFabricUI = () => {
   function importAll(r) {
     return r.keys().map(r);
   }
-  const Fabricimages = importAll(require.context('../Fabric', false, /\.jpg$/));
+  const Fabricimages = importAll(require.context('./polofabric1', false, /\.jpg$/));
   const { sharedState, setSharedState } = useContext(StyleContext);
 
 
   const selectFabric = (index) => {
-    setSharedState({ Fabricindex: index }); //operation for seleting fabric
+    setSharedState({ NeckFabricIndex: index }); //operation for seleting fabric
+    console.log("neckfabricindex:;",sharedState.NeckFabricIndex)
   };
 
   return (

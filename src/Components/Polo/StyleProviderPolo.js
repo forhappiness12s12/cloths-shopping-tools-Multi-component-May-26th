@@ -9,6 +9,12 @@ const StyleProvider = ({ children }) => {
     CollarStyle: [true,false,false,false,false],
     CollarFabricIndex : 0,
     CollarContrastFlag:[false],
+    ChestStyle:[true,false,false],
+    NeckFabricIndex:0,
+    NeckContrastFlag:[false],
+    ButtonFlag:[true,false],
+    CuffFabricIndex:0,
+    CuffContrastFlag:[false],
     // Add more variables as needed
   });
   const updateSharedState = (updates) => {
