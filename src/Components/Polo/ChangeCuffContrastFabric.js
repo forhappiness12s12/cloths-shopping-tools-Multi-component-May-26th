@@ -12,6 +12,7 @@ export const ChangeCuffContrastFabricUI = () => {
 
 
   const selectFabric = (index) => {
+    
     setSharedState({ CuffFabricIndex: index }); //operation for seleting fabric
   };
 

@@ -33,6 +33,7 @@ export const Selectoption = () => {
                     <li><button onClick={() => goToPage('Jogger','/Joggers', )} className="w-[100%] h-15 text-white">Jogger</button></li>
                     <li><button onClick={() => goToPage('Tshirt','/Tshirt' )} className="w-[100%] h-15  text-white">Tshirt</button></li>
                     <li><button onClick={() => goToPage('Polo','/Polo' )} className="w-[100%] h-15 text-white">Polo</button></li>
+                    <li><button onClick={() => goToPage('Shorts','/Shorts' )} className="w-[100%] h-15 text-white">Shorts</button></li>
                 </ul>
             </div>
         </div>

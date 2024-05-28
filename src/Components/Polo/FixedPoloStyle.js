@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { StyleContext } from "./StyleProviderPolo";
 import { useContext } from "react";
 import { Tooltip } from 'react-tooltip'
@@ -96,6 +96,18 @@ export const FixedPoloStyle=()=>{
         setSharedState({ButtonFlag:[true,false]})
         }
     }
+    useEffect(() => {
+        // Call the default functions on initial render
+        CollarStyleChange(0)
+        CollarContrastFabric(0)
+        ChestStyleChange(0)
+        NeckbandContrastFabric(0)
+        ButtonFlagChange(0)
+        CuffContrastFabric(0)
+        
+    }, []);
+
+   
     
 
     return(
@@ -106,16 +118,11 @@ export const FixedPoloStyle=()=>{
                 <div className="text-white text-[13px]" >COLLAR STYLE</div>
                 <label className="container text-white" data-tooltip-id="my-tooltip-left" data-tooltip-place="top">
 
-                    <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(0)} />
+                    <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>
                     Round
                 </label>
-                <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center z-10' >
-                    <div>
-                        <img src={halfpointedright} alt="Cat" className='w-[100px]' />
-                        <span >T32K2</span>
-                    </div>
-                </Tooltip>
+                
                 <label
                     className="container text-white"
                     data-tooltip-id="my-tooltip-right"
@@ -126,12 +133,7 @@ export const FixedPoloStyle=()=>{
                     <span className="checkmark px-1"></span>
                     Cutaway
                 </label>
-                <Tooltip id="my-tooltip-right" className="opacity-100">
-                    <div>
-                        <img src={halfpointedleft} alt="Cat" className='w-[100px]' />
-                        <span>T32K3</span>
-                    </div>
-                </Tooltip>
+                
                 <label
                     className="container text-white"
                     data-tooltip-id="my-tooltip-right"
@@ -142,59 +144,34 @@ export const FixedPoloStyle=()=>{
                     <span className="checkmark px-1"></span>
                     Classic
                 </label>
-                <Tooltip id="my-tooltip-right" className="opacity-100">
-                    <div>
-                        <img src={halfpointedleft} alt="Cat" className='w-[100px]' />
-                        <span>T32K3</span>
-                    </div>
-                </Tooltip>
+                
                 <div></div>
                 
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-htooltip-right" data-tooltip-place="top">
                     <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(3)} />
                     <span className="checkmark px-1"></span>Button
                 </label>
-                <Tooltip id="my-htooltip-right" className='opacity-100' >
-                    <div>
-                        <img src={pointedflapright} alt="Cat" className='w-[100px]' />
-                        <span>T32H9</span>
-                    </div>
-                </Tooltip>
+                
                 <label className="container text-white   mt-[10px]" data-tooltip-id="my-htooltip-left" data-tooltip-place="top">
                     <input type="radio" name="collarstyle" onChange={() => CollarStyleChange(4)} />
                     <span className="checkmark px-1"></span>Conclead
                 </label>
-                <Tooltip id="my-htooltip-left" className='opacity-100' >
-                    <div>
-                        <img src={pointedflapleft} alt="Cat" className='w-[100px]' />
-                        <span>T32J1</span>
-                    </div>
-                </Tooltip>
+                
                 <div></div>
             </div>
             {/* Collar Fabric */}
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">COLLAR FABRIC</div>
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-h" data-tooltip-place="top">
-                    <input type="radio" name="collarfabric" onChange={() =>CollarContrastFabric(0)} />
+                    <input type="radio" name="collarfabric" onChange={() =>CollarContrastFabric(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>Contrast
                 </label>
-                <Tooltip id="my-ticket-pocket-h" className='opacity-100 relative' >
-                    <div className="">
-                        <img src={ticketpointhor} alt="Cat" className='w-[100px]' />
-                        <span>Ticket Horizontal</span>
-                    </div>
-                </Tooltip>
+               
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-v" data-tooltip-place="top">
                     <input type="radio" name="collarfabric" onChange={() => CollarContrastFabric(1)} />
                     <span className="checkmark px-1"></span>Plain
                 </label>
-                <Tooltip id="my-ticket-pocket-v" className='opacity-100' >
-                    <div>
-                        <img src={ticketpointver} alt="Cat" className='w-[100px]' />
-                        <span>Ticket Vertical</span>
-                    </div>
-                </Tooltip>
+                
                 
 
             </div>
@@ -206,57 +183,37 @@ export const FixedPoloStyle=()=>{
                     <input type="radio" name="chest" onChange={() => ChestStyleChange(2)} />
                     <span className="checkmark px-1"></span>NO
                 </label>
-                <Tooltip id="my-ticket-pocket-h" className='opacity-100' >
-                    <div>
-                        <img src={ticketpointhor} alt="Cat" className='w-[100px]' />
-                        <span>Ticket Horizontal</span>
-                    </div>
-                </Tooltip>
+                
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-v" data-tooltip-place="top">
                     <input type="radio" name="chest" onChange={() => ChestStyleChange(1)} />
                     <span className="checkmark px-1"></span>Square
                 </label>
-                <Tooltip id="my-ticket-pocket-v" className='opacity-100' >
-                    <div>
-                        <img src={ticketpointver} alt="Cat" className='w-[100px]' />
-                        <span>Ticket Vertical</span>
-                    </div>
-                </Tooltip>
+                
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-v" data-tooltip-place="top">
-                    <input type="radio" name="chest" onChange={() => ChestStyleChange(0)} />
+                    <input type="radio" name="chest" onChange={() => ChestStyleChange(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>Pointed
                 </label>
-                <Tooltip id="my-ticket-pocket-v" className='opacity-100' >
-                    <div>
-                        <img src={ticketpointver} alt="Cat" className='w-[100px]' />
-                        <span>Ticket Vertical</span>
-                    </div>
-                </Tooltip>
+               
 
             </div>
             {/* Neckband */}
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">NECKBAND</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="neckband" onChange={() => NeckbandContrastFabric(0)} />
+                    <input type="radio" name="neckband" onChange={() => NeckbandContrastFabric(0)} defaultChecked />
                     <span className="checkmark px-1"></span>Contrast
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100' >
-                    <div>
-                        <img src={bottomvent} alt="Cat" className='w-[100px]' />
-                        <span>T-3620</span>
-                    </div>
-                </Tooltip>
+                
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
                     <input type="radio" name="neckband" onChange={() => NeckbandContrastFabric(1)} />
                     <span className="checkmark px-1"></span>Plain
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 
 
             </div>
@@ -265,25 +222,25 @@ export const FixedPoloStyle=()=>{
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">PLACKET</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="placket" onChange={() => ButtonFlagChange(0)} />
+                    <input type="radio" name="placket" onChange={() => ButtonFlagChange(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>2 Button
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-vent" className='opacity-100' >
                     <div>
                         <img src={bottomvent} alt="Cat" className='w-[100px]' />
                         <span>T-3620</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
                     <input type="radio" name="placket" onChange={() => ButtonFlagChange(1)} />
                     <span className="checkmark px-1"></span>3 Button
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 
 
             </div>
@@ -291,25 +248,25 @@ export const FixedPoloStyle=()=>{
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">CUFFS FABRIC</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="cuff" onChange={() => CuffContrastFabric(0)} />
+                    <input type="radio" name="cuff" onChange={() => CuffContrastFabric(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>Contrast
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-vent" className='opacity-100' >
                     <div>
                         <img src={bottomvent} alt="Cat" className='w-[100px]' />
                         <span>T-3620</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
                     <input type="radio" name="cuff" onChange={() => CuffContrastFabric(1)} />
                     <span className="checkmark px-1"></span>Plain
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 
 
             </div>
@@ -321,22 +278,22 @@ export const FixedPoloStyle=()=>{
                     <input type="radio" name="hem" onChange={() => BottomStyleChange(0)} />
                     <span className="checkmark px-1"></span>Slits
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-vent" className='opacity-100' >
                     <div>
                         <img src={bottomvent} alt="Cat" className='w-[100px]' />
                         <span>T-3620</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
                     <input type="radio" name="hem" onChange={() => BottomStyleChange(1)} />
                     <span className="checkmark px-1"></span>Plain
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 
 
             </div>

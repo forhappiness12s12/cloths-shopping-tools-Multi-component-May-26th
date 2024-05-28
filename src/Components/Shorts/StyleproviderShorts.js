@@ -4,7 +4,8 @@ const StyleContext = createContext();
 
 const StyleProvider = ({ children }) => {
   const [sharedState, setSharedState] = useState({
-    Productype:'SELECTION',
+    Fabricindex: 2,
+    CollarStyle: [true,false,false,false,false,false,false],
     
     // Add more variables as needed
   });

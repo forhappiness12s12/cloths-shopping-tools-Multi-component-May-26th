@@ -54,9 +54,9 @@ export const RegularLegStyle = () => {
                     <span className="checkmark px-1"></span>
                     Right
                 </label>
-                <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center' >
+                <Tooltip id="my-tooltip-left" className='opacity-100' >
                     <div>
-                        <img src={halfpointedright} alt="Cat" className='w-[100px]' />
+                        <img src={halfpointedright} alt="Cat" className='w-[100px] z-10' />
                         <span >T32K2</span>
                     </div>
                 </Tooltip>
@@ -70,7 +70,7 @@ export const RegularLegStyle = () => {
               <span className="checkmark px-1"></span>
               Left
             </label>
-            <Tooltip id="my-tooltip-right" className="opacity-100">
+            <Tooltip id="my-tooltip-right" className="opacity-100 z-10">
               <div>
               <img src={halfpointedleft} alt="Cat"  className='w-[100px]'/>
                 <span>T32K3</span>

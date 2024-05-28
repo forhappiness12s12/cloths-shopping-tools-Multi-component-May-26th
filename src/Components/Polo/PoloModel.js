@@ -202,6 +202,13 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                         geometry={nodes.collar_button_down.geometry}
                         visible={sharedState.CollarStyle[3]}
                     />
+                    <mesh
+                        material={sharedState.CollarContrastFlag
+                            ? collarfabricMaterials[sharedState.CollarFabricIndex]
+                            : fabricMaterials[sharedState.Fabricindex]}
+                        geometry={nodes.buttons002.geometry}
+                        visible={sharedState.CollarStyle[3]}
+                    />
 
                     <mesh
                         material={sharedState.CollarContrastFlag

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { StyleContext } from "./StyleProviderPolo";
 import { useContext } from "react";
 import { Tooltip } from 'react-tooltip'
@@ -69,6 +69,11 @@ export const ChangePoloStyle=()=>{
         newarray[number]=true
         setSharedState({ChestStyle:newarray})
     }
+    useEffect(()=>{
+        CollarStyleChange(0)
+        ChangeCuffContrastFabric(0)
+        ChestStyleChange(0)
+    },[]);
 
     return(
         <div className=" bg-[#141414]  border-solid rounded-md border-2  border-[#bbb5b5] p-2 mx-2 mt-4 shadow-[#faf397] shadow-lg">
@@ -77,25 +82,25 @@ export const ChangePoloStyle=()=>{
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">COLLAR STYLE</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="icollar" onChange={() => CollarStyleChange(0)} />
+                    <input type="radio" name="icollar" onChange={() => CollarStyleChange(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>Round
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100 z-10' >
+                {/* <Tooltip id="my-bottom-vent" className='opacity-100 z-10' >
                     <div>
                         <img src={bottomvent} alt="Cat" className='w-[100px]' />
                         <span>T-3620</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
                     <input type="radio" name="icollar" onChange={() => CollarStyleChange(1)} />
                     <span className="checkmark px-1"></span>Cutaway
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100 z-10' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100 z-10' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 
 
             </div>
@@ -104,25 +109,25 @@ export const ChangePoloStyle=()=>{
             <div className="grid grid-cols-3 grid-rows-1 p-1">
                 <div className="text-white text-[13px] mt-[10px]">CUFF</div>
                 <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-                    <input type="radio" name="icuff" onChange={() => ChangeCuffContrastFabric(0)} />
+                    <input type="radio" name="icuff" onChange={() => ChangeCuffContrastFabric(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>Contrast
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-vent" className='opacity-100' >
                     <div>
                         <img src={bottomvent} alt="Cat" className='w-[100px]' />
                         <span>T-3620</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
                     <input type="radio" name="icuff" onChange={() => ChangeCuffContrastFabric(1)} />
                     <span className="checkmark px-1"></span>Plain
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 
 
             </div>
@@ -134,32 +139,32 @@ export const ChangePoloStyle=()=>{
                     <input type="radio" name="ichest" onChange={() => ChestStyleChange(2)} />
                     <span className="checkmark px-1"></span>NO
                 </label>
-                <Tooltip id="my-bottom-vent" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-vent" className='opacity-100' >
                     <div>
                         <img src={bottomvent} alt="Cat" className='w-[100px]' />
                         <span>T-3620</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
                     <input type="radio" name="ichest" onChange={() => ChestStyleChange(1)} />
                     <span className="checkmark px-1"></span>SQUARE
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <label className="container text-white mt-[10px]" data-tooltip-id="my-bottom-pant" data-tooltip-place="top">
-                    <input type="radio" name="ichest" onChange={() => ChestStyleChange(0)} />
+                    <input type="radio" name="ichest" onChange={() => ChestStyleChange(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>POINTED
                 </label>
-                <Tooltip id="my-bottom-pant" className='opacity-100' >
+                {/* <Tooltip id="my-bottom-pant" className='opacity-100' >
                     <div>
                         <img src={bottompant} alt="Cat" className='w-[100px]' />
                         <span>T-3621</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 
 
             </div>

@@ -44,12 +44,12 @@ export const SkinnyFitStyle = () => {
                     <span className="checkmark px-1"></span>
 
                 </label>
-                <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center z-10' >
+                {/* <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center z-10' >
                     <div>
                         <img src={halfpointedright} alt="Cat" className='w-[100px]' />
                         <span >T32K2</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <div className="text-white text-[20px] p-2" >RIB CUFF</div>
                 <label
                     className="container text-white p-2"
@@ -61,12 +61,12 @@ export const SkinnyFitStyle = () => {
                     <span className="checkmark px-1"></span>
 
                 </label>
-                <Tooltip id="my-tooltip-right" className="opacity-100 z-10">
+                {/* <Tooltip id="my-tooltip-right" className="opacity-100 z-10">
                     <div>
                         <img src={halfpointedleft} alt="Cat" className='w-[100px]' />
                         <span>T32K3</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <div className="text-white text-[20px] p-2" >FRONT POCKET</div>
                 <label className="container text-white p-2" data-tooltip-id="my-tooltip-left" data-tooltip-place="top">
 
@@ -74,12 +74,12 @@ export const SkinnyFitStyle = () => {
                     <span className="checkmark px-1"></span>
 
                 </label>
-                <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center' >
+                {/* <Tooltip id="my-tooltip-left" className='opacity-100 justify-center items-center' >
                     <div>
                         <img src={halfpointedright} alt="Cat" className='w-[100px]' />
                         <span >T32K2</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
                 <div className="text-white text-[20px] p-2" >GENERAL</div>
                 <label
                     className="container text-white p-2"
@@ -91,12 +91,12 @@ export const SkinnyFitStyle = () => {
                     <span className="checkmark px-1"></span>
                     
                 </label>
-                <Tooltip id="my-tooltip-right" className="opacity-100">
+                {/* <Tooltip id="my-tooltip-right" className="opacity-100">
                     <div>
                         <img src={halfpointedleft} alt="Cat" className='w-[100px]' />
                         <span>T32K3</span>
                     </div>
-                </Tooltip>
+                </Tooltip> */}
 
             </div>
 
