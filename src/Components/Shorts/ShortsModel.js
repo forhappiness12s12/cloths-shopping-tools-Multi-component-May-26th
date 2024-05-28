@@ -22,7 +22,7 @@ export const ShortsModel = () => {
     const texture = textureLoader.load(image);
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(20, 20);
+    texture.repeat.set(1, 1);
     return texture;
   });
 

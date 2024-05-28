@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleContext } from "./StyleProvider";
 import { useContext } from "react";
 import { Tooltip } from 'react-tooltip'
@@ -26,8 +26,8 @@ export const RegularLegStyle = () => {
           newarray[number] = true;
         setSharedState({BackPocketStyle:newarray})
     }
-    const TicketPocketStyleChange=()=>{
-        if(sharedState.TicketPocketStyle[0]===true){
+    const TicketPocketStyleChange=(number)=>{
+        if(number==0){
         setSharedState({TicketPocketStyle:[false,true]})}
         else{setSharedState({TicketPocketStyle:[true,false]})}
     }
@@ -38,6 +38,15 @@ export const RegularLegStyle = () => {
         newarray[0]=true;
         setSharedState({BottomStyle:newarray})
     }
+    useEffect(()=>{
+      BackPocketStyleChange(0)
+      TicketPocketStyleChange(0)
+      BottomStyleChange(0)
+
+    },[]);
+
+
+
     return (
         <div className="flex flex-col border-solid border-2 opacity-80 shadow-white shadow-md bg-[#000000] border-[#A6A6A6] h-100 mx-2 mt-[20px] p-3 rounded-md  ">
 
@@ -50,7 +59,7 @@ export const RegularLegStyle = () => {
                 <div className="text-white text-[13px]" >STANDARD FLAP</div>
                 <label className="container text-white" data-tooltip-id="my-tooltip-left" data-tooltip-place="top">
                     
-                    <input type="radio" name="flap" onChange={() => BackPocketStyleChange(0)} />
+                    <input type="radio" name="flap" onChange={() => BackPocketStyleChange(0)} defaultChecked/>
                     <span className="checkmark px-1"></span>
                     Right
                 </label>
@@ -138,7 +147,7 @@ export const RegularLegStyle = () => {
             <div className="grid grid-cols-3 grid-rows-1 ">
             <div className="text-white text-[13px] mt-[10px]">TICKET POCKET</div>
             <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-h" data-tooltip-place="top"> 
-              <input type="radio" name="ticket" onChange={() => TicketPocketStyleChange()} />
+              <input type="radio" name="ticket" onChange={() => TicketPocketStyleChange(0)} defaultChecked/>
               <span className="checkmark px-1"></span>Horizontal
             </label>
             <Tooltip id="my-ticket-pocket-h" className='opacity-100' >
@@ -148,7 +157,7 @@ export const RegularLegStyle = () => {
               </div>
             </Tooltip>
             <label className="container text-white mt-[10px]" data-tooltip-id="my-ticket-pocket-v" data-tooltip-place="top">
-              <input type="radio" name="ticket" onChange={() => TicketPocketStyleChange()} />
+              <input type="radio" name="ticket" onChange={() => TicketPocketStyleChange(1)} />
               <span className="checkmark px-1"></span>Vertical
             </label>
             <Tooltip id="my-ticket-pocket-v" className='opacity-100' >
@@ -167,7 +176,7 @@ export const RegularLegStyle = () => {
             <div className="grid grid-cols-4 grid-rows-2 p-5">
             <div className="text-white text-[13px] mt-[10px]">BOTTOM STYLE</div>
             <label className="container text-white  mt-[10px]" data-tooltip-id="my-bottom-vent" data-tooltip-place="top">
-              <input type="radio" name="bottom" onChange={() => BottomStyleChange(0)} />
+              <input type="radio" name="bottom" onChange={() => BottomStyleChange(0)} defaultChecked/>
               <span className="checkmark px-1"></span>T-3620
             </label>
             <Tooltip id="my-bottom-vent" className='opacity-100' >

@@ -255,11 +255,11 @@ const Scene = ({ nodes, fabricMaterials, sharedState, collarfabricMaterials, nec
                     />
 
 
-                    {/* <mesh
+                     <mesh
                         material={fabricMaterials[sharedState.Fabricindex]}
-                        geometry={nodes.pocket_front002.geometry}
+                        geometry={nodes.pocket_front_square.geometry}
                         visible={sharedState.ChestStyle[1]}
-                    />  */}
+                    />  
                 </mesh>
 
             </group>

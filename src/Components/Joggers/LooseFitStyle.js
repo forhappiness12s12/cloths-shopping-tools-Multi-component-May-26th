@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleContext } from "./StyleProviderJoggers";
 import { useContext,startTransition } from "react";
 import { Tooltip } from 'react-tooltip'
@@ -31,6 +31,9 @@ export const LooseFitStyle=()=>{
             setSharedState({ Change_Model_Index: number });
         });
     };
+    useEffect(()=>{
+        Change_Model_Index_call(0)
+    },[]);
 
     return(
         <div className=" bg-[#141414]  border-solid rounded-md border-2  border-[#bbb5b5] p-2 mx-2 shadow-[#faf397] shadow-lg">
@@ -40,7 +43,7 @@ export const LooseFitStyle=()=>{
                     <div className="text-white text-[20px] p-2" >WITH ROPE</div>
                     <label className="container text-[20px] text-white p-2" data-tooltip-id="my-tooltip-left" data-tooltip-place="top">
 
-                        <input type="radio" name="rope" onChange={() => Change_Model_Index_call(0)} />
+                        <input type="radio" name="rope" onChange={() => Change_Model_Index_call(0)} defaultChecked/>
                         <span className="checkmark px-1 "></span>
                         
                     </label>
