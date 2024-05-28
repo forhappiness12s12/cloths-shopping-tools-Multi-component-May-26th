@@ -14,7 +14,7 @@ function App() {
     <StyleProvider>
      <Router>
       <Routes>
-        <Route path='/Trousers' exact Component={Trousers}/>
+        <Route path='/' exact Component={Trousers}/>
         <Route path='/Tshirt' Component={Tshirt}/>
         <Route path='/Polo' Component={Polo}/>
         <Route path='/Joggers' Component={Joggers}/>

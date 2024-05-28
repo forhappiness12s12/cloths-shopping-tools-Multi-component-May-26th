@@ -29,7 +29,7 @@ export const Selectoption = () => {
                     <span className="arrow"></span>
                 </label>
                 <ul className="dropdown-content opacity-90" role="menu">
-                    <li><button onClick={() => goToPage('Trousers','/Trousers',)} className="w-[100%] h-15  text-white">Trousers</button></li>
+                    <li><button onClick={() => goToPage('Trousers','/',)} className="w-[100%] h-15  text-white">Trousers</button></li>
                     <li><button onClick={() => goToPage('Jogger','/Joggers', )} className="w-[100%] h-15 text-white">Jogger</button></li>
                     <li><button onClick={() => goToPage('Tshirt','/Tshirt' )} className="w-[100%] h-15  text-white">Tshirt</button></li>
                     <li><button onClick={() => goToPage('Polo','/Polo' )} className="w-[100%] h-15 text-white">Polo</button></li>
