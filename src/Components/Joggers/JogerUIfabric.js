@@ -18,7 +18,7 @@ export const JoggersUIfabric = () => {
   return (
     
     <div className="border-solid border-2 opacity-80 shadow-white shadow-md bg-[#000000] border-[#A6A6A6]  mx-2 p-2 rounded-md flex flex-col mt-[10px] ">
-    <article className="text-white flex items-center justify-center text-[28px] font-bold">Fabric  Option</article>
+    <article className="text-white flex items-center justify-center text-[28px] font-bold">FABRIC OPTION</article>
     <div className="flex flex-row  bg-slate-600 overflow-x-auto border-solid rounded-md border-2 mx-1 border-[#a89e9e]  shadow-[#faf397] shadow-lg">
 
         {Fabricimages.map((img, index) => (

@@ -4,10 +4,12 @@ body {
 	justify-content: center;
 	align-items: center;
 	background: #222;
+	
   }
   
   .loading {
 	display: flex;
+	font-size: 40px;
   }
   
   .loading .dot {
