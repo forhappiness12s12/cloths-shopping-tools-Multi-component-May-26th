@@ -66,7 +66,45 @@ export const PoloModel = () => {
     // Create fabric materials
     const fabricMaterials = textures.map(texture => new THREE.MeshStandardMaterial({ map: texture }));
 
-    const images1 = importAll(require.context('./polofabric', false, /\.jpg$/));
+    const [images1,setFabricImages1]=useState([])
+    useEffect(() => {
+        const fetchImages1 = async () => {
+          try {
+            console.log('Fetching files from the bucket...');
+            const { data, error } = await supabase
+              .storage
+              .from('Polo%20Collar%20Fabric') // Ensure this matches your bucket name exactly
+              .list('', { limit: 100 }); // Adjust the limit as needed
+    
+            if (error) {
+              console.error('Error listing files:', error);
+              return;
+            }
+    
+            if (!data || data.length === 0) {
+              console.log('No files found in the bucket.');
+              return;
+            }
+    
+            console.log('Files found:', data);
+    
+            const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/Polo%20Collar%20Fabric/';
+    
+            // Manually construct the public URLs
+            const imageUrls = data.map((file) => {
+              const publicURL = `${baseUrl}${file.name}`;
+              console.log(`Public URL for ${file.name}: ${publicURL}`);
+              return publicURL;
+            });
+    
+            setFabricImages1(imageUrls);
+          } catch (error) {
+            console.error('Error fetching images:', error);
+          }
+        };
+    
+        fetchImages1();
+      }, []);
     const textureLoader1 = new TextureLoader();
 
     // Load textures
@@ -81,10 +119,50 @@ export const PoloModel = () => {
     // Create fabric materials
     const collarfabricMaterials = textures1.map(texture1 => new THREE.MeshStandardMaterial({ map: texture1 }));
     // neck materials
-    const images2 = importAll(require.context('./polofabric1', false, /\.jpg$/));
-    const textureLoader2 = new TextureLoader();
+    
+    
 
     // Load textures
+    const [images2,setFabricImages2]=useState([])
+    useEffect(() => {
+        const fetchImages2 = async () => {
+          try {
+            console.log('Fetching files from the bucket...');
+            const { data, error } = await supabase
+              .storage
+              .from('Polo%20Neckband%20Fabric') // Ensure this matches your bucket name exactly
+              .list('', { limit: 100 }); // Adjust the limit as needed
+    
+            if (error) {
+              console.error('Error listing files:', error);
+              return;
+            }
+    
+            if (!data || data.length === 0) {
+              console.log('No files found in the bucket.');
+              return;
+            }
+    
+            console.log('Files found:', data);
+    
+            const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/Polo%20Neckband%20Fabric/';
+    
+            // Manually construct the public URLs
+            const imageUrls = data.map((file) => {
+              const publicURL = `${baseUrl}${file.name}`;
+              console.log(`Public URL for ${file.name}: ${publicURL}`);
+              return publicURL;
+            });
+    
+            setFabricImages2(imageUrls);
+          } catch (error) {
+            console.error('Error fetching images:', error);
+          }
+        };
+    
+        fetchImages2();
+      }, []);
+      const textureLoader2 = new TextureLoader();
     const textures2 = images2.map(images2 => {
         const texture2 = textureLoader2.load(images2);
         texture2.wrapS = THREE.RepeatWrapping;
@@ -95,11 +173,49 @@ export const PoloModel = () => {
 
     // Create fabric materials
     const neckfabricMaterials = textures2.map(texture2 => new THREE.MeshStandardMaterial({ map: texture2 }));
-    const images3 = importAll(require.context('./polofabric1', false, /\.jpg$/));
-    const textureLoader3 = new TextureLoader();
-
-    // Load textures
-    const textures3 = images2.map(images3 => {
+   
+    
+    const [images3,setFabricImages3]=useState([])
+    useEffect(() => {
+        const fetchImages3 = async () => {
+          try {
+            console.log('Fetching files from the bucket...');
+            const { data, error } = await supabase
+              .storage
+              .from('Polo%20Cuff%20Fabric') // Ensure this matches your bucket name exactly
+              .list('', { limit: 100 }); // Adjust the limit as needed
+    
+            if (error) {
+              console.error('Error listing files:', error);
+              return;
+            }
+    
+            if (!data || data.length === 0) {
+              console.log('No files found in the bucket.');
+              return;
+            }
+    
+            console.log('Files found:', data);
+    
+            const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/Polo%20Cuff%20Fabric/';
+    
+            // Manually construct the public URLs
+            const imageUrls = data.map((file) => {
+              const publicURL = `${baseUrl}${file.name}`;
+              console.log(`Public URL for ${file.name}: ${publicURL}`);
+              return publicURL;
+            });
+    
+            setFabricImages3(imageUrls);
+          } catch (error) {
+            console.error('Error fetching images:', error);
+          }
+        };
+    
+        fetchImages3();
+      }, []);
+      const textureLoader3 = new TextureLoader();
+    const textures3 = images3.map(images3 => {
         const texture3 = textureLoader3.load(images3);
         texture3.wrapS = THREE.RepeatWrapping;
         texture3.wrapT = THREE.RepeatWrapping;
