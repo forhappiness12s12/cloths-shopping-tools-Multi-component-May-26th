@@ -14,7 +14,6 @@ export const CollarContrastFabricUI = () => {
 
   const selectFabric = (index) => {
     setSharedState({ CollarFabricIndex: index }); //operation for seleting fabric
-    console.log("sdlfkjsdlkfjsdlsdlfjsdlkfjslkdjfs-----",sharedState.CollarFabricIndex)
   };
 
   return (
