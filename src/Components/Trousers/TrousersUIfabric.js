@@ -3,16 +3,16 @@ import { supabase } from "../Database/supabaseClient";
 import { StyleContext } from "./StyleProvider";
 
 export const TrousersUIfabric = () => {
-  const [fabricImages, setFabricImages] = useState([]);
+  
   const { sharedState, setSharedState } = useContext(StyleContext);
-
+  const [fabricImages, setFabricImages] = useState([]);
   useEffect(() => {
     const fetchImages = async () => {
       try {
         console.log('Fetching files from the bucket...');
         const { data, error } = await supabase
           .storage
-          .from('im') // Ensure this matches your bucket name exactly
+          .from('Trouser%20Fabric') // Ensure this matches your bucket name exactly
           .list('', { limit: 100 }); // Adjust the limit as needed
 
         if (error) {
@@ -27,7 +27,7 @@ export const TrousersUIfabric = () => {
 
         console.log('Files found:', data);
 
-        const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/im/';
+        const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/Trouser%20Fabric/';
 
         // Manually construct the public URLs
         const imageUrls = data.map((file) => {

@@ -36,7 +36,7 @@ export const TrousersModel = () => {
 
         console.log('Files found:', data);
 
-        const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/im/';
+        const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/Trouser%20Fabric/';
 
         // Manually construct the public URLs
         const imageUrls = data.map((file) => {
