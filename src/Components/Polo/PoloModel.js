@@ -1,19 +1,57 @@
-import React, { useContext, useRef, useEffect, Suspense } from "react";
+import React, { useContext, useRef, useEffect, Suspense, useState } from "react";
 import { StyleContext } from "./StyleProviderPolo";
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { ContactShadows, Environment, OrbitControls, useGLTF } from '@react-three/drei';
 import { TextureLoader } from 'three';
 import * as THREE from 'three';
 import Loading from "./Loading";
+import { supabase } from "../Database/supabaseClient";
+
 export const PoloModel = () => {
     const { sharedState } = useContext(StyleContext);
-
-    // Function to import all images
+    const [Fabricimages,setFabricImages]=useState([]);
     function importAll(r) {
         return r.keys().map(r);
-    }
-
-    const images = importAll(require.context('../Fabric', false, /\.jpg$/));
+      }
+    useEffect(() => {
+        const fetchImages = async () => {
+          try {
+            console.log('Fetching files from the bucket...');
+            const { data, error } = await supabase
+              .storage
+              .from('Polo%20Fabric') // Ensure this matches your bucket name exactly
+              .list('', { limit: 100 }); // Adjust the limit as needed
+    
+            if (error) {
+              console.error('Error listing files:', error);
+              return;
+            }
+    
+            if (!data || data.length === 0) {
+              console.log('No files found in the bucket.');
+              return;
+            }
+    
+            console.log('Files found:', data);
+    
+            const baseUrl = 'https://krvevkxigsdnikvakxjt.supabase.co/storage/v1/object/public/Polo%20Fabric/';
+    
+            // Manually construct the public URLs
+            const imageUrls = data.map((file) => {
+              const publicURL = `${baseUrl}${file.name}`;
+              console.log(`Public URL for ${file.name}: ${publicURL}`);
+              return publicURL;
+            });
+    
+            setFabricImages(imageUrls);
+          } catch (error) {
+            console.error('Error fetching images:', error);
+          }
+        };
+    
+        fetchImages();
+      }, []);
+    const images = Fabricimages;
     const textureLoader = new TextureLoader();
 
     // Load textures
