@@ -8,7 +8,7 @@ import { supabase } from "../Database/supabaseClient";
 
 export const TrousersModel = () => {
   const { sharedState } = useContext(StyleContext);
-  const [fabricImages, setFabricImages] = useState([]);
+  const [images, setFabricImages] = useState([]);
 
   // Function to import all images
   function importAll(r) {
@@ -21,7 +21,7 @@ export const TrousersModel = () => {
         console.log('Fetching files from the bucket...');
         const { data, error } = await supabase
           .storage
-          .from('im') // Ensure this matches your bucket name exactly
+          .from('Trouser%20Fabric') // Ensure this matches your bucket name exactly
           .list('', { limit: 100 }); // Adjust the limit as needed
 
         if (error) {
@@ -53,7 +53,7 @@ export const TrousersModel = () => {
 
     fetchImages();
   }, []);
-  const images = fabricImages;
+  
   const textureLoader = new TextureLoader();
 
   // Load textures
